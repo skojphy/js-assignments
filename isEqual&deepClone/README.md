@@ -7,6 +7,10 @@
   3. NaN === NaN은 false로 평가되지만 isEqual(NaN, NaN)은 true를 반환한다.
   4. 0 === -0은 true로 평가되지만 isEqual(0, -0)은 false를 반환한다.
 
+  - type 체크 방법 참고
+
+    https://poiemaweb.com/js-type-check#2-objectprototypetostring
+
 - deepClone: 객체를 깊은 복사하는 함수
 
   1. 함수는 클론하지 않는다.
