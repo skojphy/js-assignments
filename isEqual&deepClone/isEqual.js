@@ -33,19 +33,21 @@ const isEqual = (...args) => {
   if (typeOfObject1 !== typeOfObject2) {
     result = false;
   } else if (typeOfObject1 === '[object Object]') {
-    result =
-      Object.entries(object1).length !== Object.entries(object2).length
-        ? false
-        : Object.keys(object1).every(element =>
-            isEqual(object1[element], object2[element])
-          );
+    if (Object.entries(object1).length !== Object.entries(object2).length) {
+      result = false;
+    } else {
+      result = Object.keys(object1).every(element =>
+        isEqual(object1[element], object2[element])
+      );
+    }
   } else if (typeOfObject1 === '[object Array]') {
-    result =
-      object1.length !== object2.length
-        ? false
-        : object1.every((element, index) =>
-            isEqual(object1[index], object2[index])
-          );
+    if (object1.length !== object2.length) {
+      result = false;
+    } else {
+      result = object1.every((element, index) =>
+        isEqual(object1[index], object2[index])
+      );
+    }
   } else {
     result = Object.is(object1, object2);
   }
