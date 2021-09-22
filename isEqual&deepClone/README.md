@@ -10,6 +10,8 @@
   - type 체크 방법 참고
 
     https://poiemaweb.com/js-type-check#2-objectprototypetostring
+  
+  - 다중 if-else문을 한 줄의 삼항조건연산자 표현식으로 축약해 보았는데, 어떤 표현이 더 가독성이 좋은지 판단할 수 없어 표현식은 주석처리 하였음.
 
 - deepClone: 객체를 깊은 복사하는 함수
 
