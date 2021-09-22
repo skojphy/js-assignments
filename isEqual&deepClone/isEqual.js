@@ -13,27 +13,43 @@ const isEqual = (...args) => {
     Object.prototype.toString.call(object2)
   ];
 
+  //   result =
+  //     typeOfObject1 !== typeOfObject2
+  //       ? false
+  //       : typeOfObject1 === '[object Object]'
+  //       ? Object.entries(object1).length !== Object.entries(object2).length
+  //         ? false
+  //         : Object.keys(object1).every(element =>
+  //             isEqual(object1[element], object2[element])
+  //           )
+  //       : typeOfObject1 === '[object Array]'
+  //       ? object1.length !== object2.length
+  //         ? false
+  //         : object1.every((element, index) =>
+  //             isEqual(object1[index], object2[index])
+  //           )
+  //       : Object.is(object1, object2);
+
   if (typeOfObject1 !== typeOfObject2) {
     result = false;
   } else if (typeOfObject1 === '[object Object]') {
-    if (Object.entries(object1).length !== Object.entries(object2).length) {
-      result = false;
-    } else {
-      result = Object.keys(object1).every(element =>
-        isEqual(object1[element], object2[element])
-      );
-    }
+    result =
+      Object.entries(object1).length !== Object.entries(object2).length
+        ? false
+        : Object.keys(object1).every(element =>
+            isEqual(object1[element], object2[element])
+          );
   } else if (typeOfObject1 === '[object Array]') {
-    if (object1.length !== object2.length) {
-      result = false;
-    } else {
-      result = object1.every((element, index) =>
-        isEqual(object1[index], object2[index])
-      );
-    }
+    result =
+      object1.length !== object2.length
+        ? false
+        : object1.every((element, index) =>
+            isEqual(object1[index], object2[index])
+          );
   } else {
     result = Object.is(object1, object2);
   }
+
   return result;
 };
 
